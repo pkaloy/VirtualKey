@@ -1,0 +1,97 @@
+package com.virtualkey.main;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import com.virtualkey.util.FileService;
+
+
+
+
+
+public class App {
+		static Scanner sc = new Scanner (System.in);
+		static String myFileName;
+
+	public static void main(String[] args) {
+		
+		int choice;
+		String cont, txtName;
+		FileService ss = new FileService();
+		ss.updateList();
+		
+		System.out.println("Virtual Key" + '\n' + "This application is for demonstration only, developed by Panagiotis Kalogirou"+ '\n'+"Select one of the three options below." );
+		
+		try {	
+	
+		do {
+			
+			
+			System.out.println("1: Display all the files in ascending order 2: Manage the files 3: Close the application" + '\n' + "Please enter your choice");
+			choice = sc.nextInt();
+			
+								
+			switch(choice) {
+			case 1: 
+					ss.ascOrder();
+					break;
+			case 2: System.out.println("1: Add a file 2: Delete a file 3: Search a file"+ '\n'+ "Please enter your choice");
+					choice = sc.nextInt();
+					switch(choice) {
+					case 1: txtName = answer();									
+							ss.addFile(txtName);
+							break;
+					case 2: txtName = answer();
+							ss.deleteFile(txtName);
+							break;
+					case 3: txtName = answer();
+							ss.searchFile(txtName);
+							break;
+					default:System.out.println("Please enter a number from 1 to 3");
+					}
+				
+					break;
+					
+			case 3: System.out.println("The application is terminated");
+					System.exit(0);
+					break;
+			
+					
+			default: System.out.println("Please enter a number from 1 to 3");
+					break;
+			}
+			
+			System.out.println("Do you want to continue?");
+			cont = sc.next();
+
+	    }while(cont.equalsIgnoreCase("y"));
+		
+		
+	    
+	}catch(InputMismatchException e) {
+		System.out.println("The input you entered is not vaid. It must contain only number");	
+	}
+		
+	}
+	
+	static String answer() {
+		String user_ans;
+		System.out.println("Please enter the name of the file");
+		myFileName = sc.next();
+		
+		do {
+		System.out.println("Do you want to ignore the case sensitivity? (Y/y)es or (N/n)o)");
+		user_ans = sc.next();
+		
+		}while(!user_ans.equalsIgnoreCase("y") && !user_ans.equalsIgnoreCase("n"));
+		
+		System.out.println(user_ans);
+		if (user_ans.equalsIgnoreCase("y")) {
+			myFileName =myFileName.toLowerCase();
+		}
+		return myFileName;
+	}
+	
+}
+
+
+	

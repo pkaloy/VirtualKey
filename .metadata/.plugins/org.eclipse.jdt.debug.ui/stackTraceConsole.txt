@@ -1,0 +1,4 @@
+System.out.println("Do you want to ignore case sensitivity? Select y/Y if you agree or anything else if you disagree");
+							cs = sc.next();
+							if (cs.equalsIgnoreCase("y")) {
+								txtName =txtName.toLowerCase();

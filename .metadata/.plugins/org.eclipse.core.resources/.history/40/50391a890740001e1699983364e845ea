@@ -1,0 +1,117 @@
+package com.virtualkey.main;
+import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import com.virtualkey.util.FileService;
+
+
+
+
+
+public class App {
+		static Scanner sc = new Scanner (System.in);
+		static String myFileName;
+
+	public static void main(String[] args) throws FileNotFoundException {
+		
+		int choice;
+		String cont, txtName, cs;
+		FileService ss = new FileService();
+		ss.updateList();
+		
+		System.out.println("Virtual Key" + '\n' + "This application is for demonstration only, developed by Panagiotis Kalogirou"+ '\n' );
+		
+		try {	
+	
+		do {
+			
+			
+			System.out.println("1: Display all the files in ascending order 2: Manage the files 3: Close the application" + '\n' + "Please enter your choice");
+			choice = sc.nextInt();
+			
+								
+			switch(choice) {
+			case 1: 
+					ss.ascOrder();
+					break;
+			case 2: System.out.println("1: Add a file 2: Delete a file 3: Search a file"+ '\n'+ "Please enter your choice");
+					choice = sc.nextInt();
+					switch(choice) {
+					case 1: txtName = answer();
+					
+//							System.out.println("Please enter the name of the file");
+//							txtName = sc.next();
+//							System.out.println("Do you want to ignore the case sensitivity? Select y/Y if you agree or anything else if you disagree");
+//							cs = sc.next();
+//							if (cs.equalsIgnoreCase("y")) {
+//								txtName =txtName.toLowerCase();
+//							}							
+							ss.addFile(txtName);
+							break;
+					case 2: System.out.println("Please enter the name of the file");
+							txtName = sc.next();
+							System.out.println("Do you want to ignore case sensitivity? Select y/Y if you agree or anything else if you disagree");
+							cs = sc.next();
+							if (cs.equalsIgnoreCase("y")) {
+								txtName =txtName.toLowerCase();
+							}
+							ss.deleteFile(txtName);
+							break;
+					case 3: System.out.println("Please enter the name of the file");
+							txtName = sc.next();
+							System.out.println("Do you want to ignore the case sensitivity? Select y/Y if you agree or anything else if you disagree");
+							cs = sc.next();
+							if (cs.equalsIgnoreCase("y")) {
+								txtName =txtName.toLowerCase();
+							}
+							ss.searchFile(txtName);
+							break;
+					default:System.out.println("Please enter a number from 1 to 3");
+					}
+				
+					break;
+					
+			case 3: System.out.println("The application will be terminated");
+					System.exit(0);
+					break;
+			
+					
+			default: System.out.println("Please enter a number from 1 to 3");
+					break;
+			}
+			
+			System.out.println("Do you want to continue?");
+			cont = sc.next();
+
+	    }while(cont.equalsIgnoreCase("y"));
+		
+	//sc.close();	
+	    
+	}catch(InputMismatchException e) {
+		System.out.println("Value must contain only number");	
+	}
+		
+	}
+	
+	static String answer() {
+		String user_ans;
+		System.out.println("Please enter the name of the file");
+		myFileName = sc.next();
+		
+		do {
+		System.out.println("Do you want to ignore the case sensitivity? (Y/y)es or (N/n)o)");
+		user_ans = sc.next();
+		System.out.println(user_ans);
+		}while(!user_ans.equalsIgnoreCase("y") && !user_ans.equalsIgnoreCase("n"));
+		
+		System.out.println(user_ans);
+		if (user_ans.equalsIgnoreCase("y")) {
+			myFileName =myFileName.toLowerCase();
+		}
+		return myFileName;
+	}
+	
+}
+
+
+	
