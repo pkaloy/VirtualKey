@@ -21,7 +21,8 @@ public class App {
 		
 		System.out.println("Virtual Key" + '\n' + "This application is for demonstration only, developed by Panagiotis Kalogirou"+ '\n'+"Select one of the three options below." );
 		
-			
+		try {	
+	
 		do {
 			
 			
@@ -75,7 +76,9 @@ public class App {
 		
 		
 	    
-	
+	}catch(InputMismatchException e) {
+		System.out.println("The input you entered is not valid. It must contain only number");	
+	}
 		
 	}
 	

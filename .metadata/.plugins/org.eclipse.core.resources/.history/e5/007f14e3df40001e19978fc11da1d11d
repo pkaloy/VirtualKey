@@ -21,29 +21,22 @@ public class App {
 		
 		System.out.println("Virtual Key" + '\n' + "This application is for demonstration only, developed by Panagiotis Kalogirou"+ '\n'+"Select one of the three options below." );
 		
-			
+		try {	
+	
 		do {
 			
 			
 			System.out.println("1: Display all the files in ascending order 2: Manage the files 3: Close the application" + '\n' + "Please enter your choice");
 			String ichoice = sc.next();
-			if (ichoice.equals("1") || ichoice.equals("2") || ichoice.equals("3")) {
-				choice = Integer.parseInt(ichoice);
-				}else {
-				choice =0;
-			}
-										
-			switch(choice) {
+			char first = ichoice.charAt(0);
+			int number = first;
+								
+			switch(number) {
 			case 1: 
 					ss.ascOrder();
 					break;
 			case 2: System.out.println("1: Add a file 2: Delete a file 3: Search a file"+ '\n'+ "Please enter your choice");
-					ichoice = sc.next();
-					if (ichoice.equals("1") || ichoice.equals("2") || ichoice.equals("3")) {
-						choice = Integer.parseInt(ichoice);
-						}else {
-						choice =0;
-					}
+					choice = sc.nextInt();
 					switch(choice) {
 					case 1: txtName = answer();									
 							ss.addFile(txtName);
@@ -75,7 +68,9 @@ public class App {
 		
 		
 	    
-	
+	}catch(InputMismatchException e) {
+		System.out.println("The input you entered is not valid. It must contain only number");	
+	}
 		
 	}
 	
