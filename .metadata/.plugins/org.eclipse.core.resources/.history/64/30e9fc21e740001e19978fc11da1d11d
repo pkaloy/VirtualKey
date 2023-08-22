@@ -68,20 +68,8 @@ public class App {
 					break;
 			}
 			
-			boolean goMain = true;
-			do {
 			System.out.println("Do you want to continue?");
 			cont = sc.next();
-			if(cont.equalsIgnoreCase("n")) {
-				System.out.println("The application is terminated");
-				System.exit(0);
-			}else if(cont.equalsIgnoreCase("y")){
-				goMain = false;	
-			}else {
-				System.out.println("Please select (Y)es or (N)o");
-				goMain = true;
-			}
-			}while(goMain);
 
 	    }while(cont.equalsIgnoreCase("y"));
 		
